@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class JavaProgramm {
-    private final static int NUMBER_OF_OPERATORS = 2;
-    private final static int NUMBER_OF_CLIENTS = 6;
+    private final static int NUMBER_OF_OPERATORS = 5;
+    private final static int NUMBER_OF_CLIENTS = 15;
 
 
     public static void main(String[] args) {

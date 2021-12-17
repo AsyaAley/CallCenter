@@ -43,11 +43,11 @@ public class CallCenter {
     }
     private synchronized boolean checkCountTrying(int numberTrying, int waitingTime, Client client) throws InterruptedException{
         if (numberTrying< NUMBER_TRYING){
-            System.out.println("Клиент " + (client.getId()-13) + " ждёт в очереди.");
+            System.out.println("Клиент " + client.getid() + " ждёт в очереди.");
             wait(waitingTime);
             return true;
         }else {
-            System.out.println("Клиент " + (client.getId()-13) + " не дозвонился");
+            System.out.println("Клиент " + client.getid() + " не дозвонился");
             return false;
         }
     }
