@@ -11,19 +11,21 @@ public class CallCenter {
     public synchronized Operator tryCall(Client client, int waitingTime) throws InterruptedException {
         Operator busyOperator = null;
         int numberTrying = 0;
-        for (Operator operator : operators) {
-            System.out.println("Клиент "+ client.getid() + " звонит");
-            if (this.searchFreeOperator(operator, client)) {
-                System.out.println("Клиент " + client.getid() + " разговаривает с оператором " + operator.getId());
-                operator.talk();
-                busyOperator = operator;
-                operators.remove(busyOperator);
-                break;
-            } else{
+        while (operators.isEmpty()) {
+            if (checkCountTrying(numberTrying, waitingTime, client)) {
                 numberTrying++;
-                checkCountTrying(numberTrying, waitingTime, client);
             }
+            else {break;}
         }
+            for (Operator operator : operators) {
+                if (this.searchFreeOperator(operator, client)) {
+                    busyOperator = operator;
+                    operators.remove(busyOperator);
+                    System.out.println("Клиент " + client.getid() + " разговаривает с оператором " + operator.getId());
+                    break;
+                }
+            }
+
         return busyOperator;
     }
 
@@ -40,12 +42,12 @@ public class CallCenter {
         } else return false;
     }
     private synchronized boolean checkCountTrying(int numberTrying, int waitingTime, Client client) throws InterruptedException{
-        if (numberTrying<= NUMBER_TRYING){
-            System.out.println("Клиент " + client.getId() + " ждёт в очереди.");
-            client.sleep(waitingTime);
+        if (numberTrying< NUMBER_TRYING){
+            System.out.println("Клиент " + (client.getId()-13) + " ждёт в очереди.");
+            wait(waitingTime);
             return true;
         }else {
-            client.interrupt();
+            System.out.println("Клиент " + (client.getId()-13) + " не дозвонился");
             return false;
         }
     }

@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class JavaProgramm {
-    private final static int NUMBER_OF_OPERATORS = 5;
-    private final static int NUMBER_OF_CLIENTS = 15;
+    private final static int NUMBER_OF_OPERATORS = 2;
+    private final static int NUMBER_OF_CLIENTS = 6;
 
 
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class JavaProgramm {
         //создаем Колл-центр
         CallCenter callCenter = new CallCenter(operators);
 
-        //создаем Клиента
+        //создаем Клиентов
         List<Client> clients = new LinkedList<>();
         for (int i = 0; i < NUMBER_OF_CLIENTS; i++) {
             Client client = new Client(callCenter, i+1);

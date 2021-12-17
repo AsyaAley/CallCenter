@@ -20,8 +20,10 @@ public class Client extends Thread {
         Operator operator = null;
         try {
             while (operator == null) {
+                System.out.println("Звонит клиент " + this.id);
                 operator = callCenter.tryCall(this, WAITING_TIME);
             }
+            operator.talk();
             callCenter.endCall(operator);
         } catch (InterruptedException e) {
             System.out.println("Клиент " + this.id + " положил трубку.");
