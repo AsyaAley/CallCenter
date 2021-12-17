@@ -21,7 +21,7 @@ public class Operator {
     }
 
     public void talk() throws InterruptedException {
-        client.sleep((long) (Math.random()*3000 + 3000));
+        client.sleep((long) (Math.random()*3000 + 6000));
 
     }
 }

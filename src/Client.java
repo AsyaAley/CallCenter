@@ -24,7 +24,7 @@ public class Client extends Thread {
             }
             callCenter.endCall(operator);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("Клиент " + this.id + " положил трубку.");
         }
 
     }
